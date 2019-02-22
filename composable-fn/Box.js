@@ -36,4 +36,6 @@ const result = LazyBox(() => ' 65 ')
         .map(x => String.fromCharCode(x))
         .fold(x => x.toLowerCase());
 
-console.log(result);
+// console.log(result);
+
+module.exports = { Box };

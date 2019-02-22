@@ -38,7 +38,8 @@ const getPort = () =>
     .chain(c => tryCatch(() => JSON.parse(c)))
     .fold(e => 3000, c => c.port);
 
-
 const result = getPort();
 
-console.log(result);
+// console.log(result);
+
+module.exports = { Right, Left, fromNullable };
