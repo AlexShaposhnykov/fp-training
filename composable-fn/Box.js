@@ -4,6 +4,12 @@ const Box = x => ({
     inspect: () => `Box(${x})`,
 });
 
+const LazyBox = g => ({
+    map: f => LazyBox(() => f(g())),
+    fold: f => f(g()),
+    inspect: () => `LazyBox(${g()})`,
+});
+
 const numToFloat = str => 
     Box(str)
     .map(s => s.replace(/\$/g, ''))
@@ -21,6 +27,13 @@ const applyDiscount = (price, discount) =>
         .fold(savings => cost - cost * savings)
     );
 
-const result = applyDiscount('$5.00', '20%');
+// const result = applyDiscount('$5.00', '20%');
+
+const result = LazyBox(() => ' 65 ')
+        .map(abba => abba.trim())
+        .map(trimmed => new Number(trimmed))
+        .map(num => num + 1)
+        .map(x => String.fromCharCode(x))
+        .fold(x => x.toLowerCase());
 
 console.log(result);

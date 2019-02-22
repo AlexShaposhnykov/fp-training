@@ -34,7 +34,7 @@ const tryCatch = f => {
 const fs = require('fs');
 
 const getPort = () => 
-    tryCatch(() => fs.readFileSync('either-config.json'))
+    tryCatch(() => fs.readFileSync('eidsfther-config.json'))
     .chain(c => tryCatch(() => JSON.parse(c)))
     .fold(e => 3000, c => c.port);
 

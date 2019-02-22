@@ -1,3 +1,5 @@
+const { List, Map } = require('immutable-ext');
+
 const compose = (...fns) => x => fns.reduceRight((v, f) => f(v), x); 
 
 // Semigroup is a type with a concat method
@@ -55,10 +57,24 @@ const longWord = x => x.length >= 5;
 
 const both = Fn(compose(All, hasVowels)).concat(Fn(compose(All, longWord)));
 
-const res = ['gym', 'bird', 'lilac'].filter(x => both.fold(x).x);
+// const res = ['gym', 'bird', 'lilac'].filter(x => both.fold(x).x);
 
-console.log(res);
+// console.log(res);
 
 // Semigroup does not have an element to return, so it is not a safe operation
 // With monoids we can take as many elements as we want, even none, and it still will be
 // a perfectly safe operation
+
+/**
+|--------------------------------------------------
+| foldMap
+|--------------------------------------------------
+*/
+
+const res = Map({ brian: 4, mary: 10 })
+        .foldMap(Sum, Sum.empty())
+        // .map(Sum)
+        // .fold(Sum.empty())
+        // .reduce((acc, x) => acc.concat(x), Sum.empty());
+
+console.log(res);
