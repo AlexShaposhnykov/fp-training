@@ -9,9 +9,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "data.either": "^1.5.2",
     "data.task": "^3.1.2",
+    "fantasy-identities": "0.0.1",
     "futurize": "^1.2.0",
     "immutable": "^4.0.0-rc.12",
-    "immutable-ext": "^1.1.5"
+    "immutable-ext": "^1.1.5",
+    "request": "^2.88.0"
   }
 }
